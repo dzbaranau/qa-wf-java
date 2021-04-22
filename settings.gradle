@@ -1,0 +1,3 @@
+rootProject.name = 'qa-wf-java'
+
+include 'qa-wf-java-ui'

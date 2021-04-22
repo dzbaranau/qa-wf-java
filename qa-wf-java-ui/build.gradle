@@ -1,0 +1,183 @@
+apply plugin: 'rup-jdbc'
+apply plugin: 'rup-mybatis'
+
+configurations {
+    jbehave
+    compile.exclude module: 'selenium-edge-driver'
+    compile.exclude module: 'selenium-ie-driver'
+    compile.exclude module: 'selenium-opera-driver'
+    compile.exclude module: 'selenium-safari-driver'
+    compile.exclude module: 'selenium-htmlunit-driver'
+    compile.exclude module: 'htmlunit'
+}
+
+dependencies {
+    compile ("com.copyright.rup.party:party-api:${partyVersion}") {
+        exclude module: 'rup-common-util'
+    }
+    compile ("com.copyright.rup.party:party-rest-api:${partyVersion}") {
+        exclude module: 'rup-common-util'
+    }
+    compile ("com.copyright.rup.party:party-domain:${partyVersion}") {
+        exclude module: 'rup-common-util'
+    }
+    compile "com.copyright.rup.rest:rup-rest-consumer:${rupRestVersion}"
+
+    compile "io.rest-assured:rest-assured:${restAssuredVersion}"
+    // RUP
+    compile("com.copyright.rup.common:rup-common-config:${rupCommonConfigVersion}")
+    compile('com.copyright.rup.qa.common.ui:qa-common-ui:3.1.0') {
+        exclude group: 'io.netty'
+    }
+    compile 'ru.yandex.qatools.ashot:ashot:1.5.4'
+
+
+    compile("com.codeborne:selenide:${selenideVersion}") {
+        exclude group: 'io.netty'
+    }
+
+    compile "org.springframework:spring-test:${rupQaJava.standardDependencies.spring.version}"
+
+    // JBehave
+    compile "org.jbehave:jbehave-core:${jbehaveVersion}"
+    compile ("org.jbehave:jbehave-spring:${jbehaveVersion}") {
+        exclude group: 'org.springframework'
+    }
+    compile "org.jbehave.site:jbehave-site-resources:${jbehaveSiteResourcesVersion}"
+
+    //web driver manager
+    compile 'io.github.bonigarcia:webdrivermanager:2.2.2'
+
+    //Report portal
+    compile('com.epam.reportportal:logger-java-logback:4.0.0') {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
+    compile('com.epam.reportportal:client-java:4.0.9') {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
+    compile('com.epam.reportportal:agent-java-jbehave:4.2.0') {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
+    compile "org.aspectj:aspectjweaver:${aspectJVersion}"
+
+    // CSV
+    compile "net.sf.supercsv:super-csv:${supercsvVersion}"
+
+    // Promotion REST
+    compile ("com.copyright.rup.promotion:promotion-rest-api:${promotionVersion}")
+    compile ("com.copyright.rup.promotion:promotion-rest-consumer:${promotionVersion}")
+
+    compile ("org.apache.poi:poi:${apachePoiVersion}")
+    compile ("org.apache.poi:poi-ooxml:${apachePoiVersion}")
+
+    compile "org.jprocesses:jProcesses:1.6.4"
+    compile("com.copyright.rup.aws:rup-aws-sns:${rupAwsVersion}")
+
+//    compile("org.mock-server:mockserver-netty:${mockServerVersion}") {
+//        exclude group: 'com.google.guava'
+//        exclude group: 'io.netty'
+//    }
+
+//    compile("io.netty:netty-all:${nettyVersion}")
+
+    compile group: 'com.github.javaparser', name: 'javaparser-core', version: '3.18.0'
+}
+
+sourceSets {
+    runtime {
+        compileClasspath = sourceSets.main.output + configurations.runtime
+        runtimeClasspath = output + compileClasspath
+        resources {
+            exclude 'report/'
+        }
+    }
+}
+
+jar {
+    doFirst {
+        manifest {
+            attributes "Class-Path": configurations.runtime.files.collect { it.toURL() }.join(" ")
+        }
+    }
+}
+
+task(type: JavaExec, 'bddTest') {
+    description 'Runs the BDD tests'
+
+    main 'com.copyright.rup.qa.automation.pubportal.special.request.runner.StoryRunner'
+    classpath = jar.outputs.files
+
+    def variablePrefix = 'qaa.'
+    systemProperties System.getProperties().findAll { it.key.startsWith(variablePrefix) }
+
+    /*
+     * JBehave requires the Maven's "target" folder in order
+     * to obtain the absolute path from relative path.
+     */
+    doFirst {
+        file('target').mkdirs()
+
+        copy {
+            from(zipTree(jarPath("jbehave-core"))) {
+                include "style/*"
+            }
+            into("build/jbehave/view")
+
+        }
+        copy {
+            from(zipTree(jarPath("jbehave-site-resources"))) {
+                include "js/**/*"
+                include "style/**/*"
+                include "images/*"
+            }
+            into("build/jbehave/view")
+        }
+
+    }
+
+    doLast {
+        file('target').delete()
+    }
+}
+
+
+task(type: JavaExec, 'cleanProcesses') {
+    description 'Clean browser and webdriver processes'
+    main 'com.copyright.rup.qa.automation.pubportal.special.request.utils.CleanWebDriverProcessesTask'
+    classpath = jar.outputs.files
+    systemProperties System.getProperties()
+}
+
+task(type: JavaExec, 'genDoc') {
+    description 'Generate readme.md file to describe steps'
+    String pathToSteps = "src/main/java/com/copyright/rup/qa/automation/pubportal/special/request/steps"
+    String docFile = "README.md"
+    main 'com.copyright.rup.qa.automation.pubportal.special.request.docgen.DocumentationGenerator'
+    args(pathToSteps, docFile)
+    classpath = jar.outputs.files
+    systemProperties System.getProperties()
+}
+
+// Execute with params: -Dqaa.environment=pdev -Dmanuscript.id=<manuscript_uid>
+task(type: JavaExec, 'removeManuscript') {
+    description 'Remove manuscript'
+
+    main 'com.copyright.rup.qa.automation.pubportal.special.request.utils.RemoveManuscriptTask'
+    classpath = jar.outputs.files
+
+    systemProperties System.getProperties()
+}
+
+def jarPath(String jarName) {
+    configurations.testCompile.find({ it.name.startsWith(jarName) }).absolutePath
+}
+
+bddTest.finalizedBy cleanProcesses
+
+uploadArchives {
+    repositories {
+        flatDir {
+            dirs 'repos'
+        }
+    }
+}

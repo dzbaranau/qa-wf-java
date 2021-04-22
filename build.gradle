@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        maven { url rupRepoExtUrl }
+        ivy { url rupRepoReleaseUrl }
+        if (project.hasProperty('developPlugins')) {
+            ivy { url file(System.getProperty('user.home') + '/.ivylocal') }
+        }
+    }
+    dependencies {
+        classpath("com.copyright.rup.scm.gradle.plugins:rup-gradle-plugins:${rupGradlePluginsVersion}")
+    }
+}
+
+apply plugin: 'rup-qa-java'
+apply plugin: 'rup-idea'
+
+allprojects {
+    group = 'com.copyright.rup.qa.automation.wf'
+}
+
+subprojects {
+    repositories {
+        maven { url rupRepoReleaseUrl }
+        ivy { url rupRepoQaSnapshotUrl }
+    }
+
+    dependencies {
+        compile "com.copyright.rup.common:rup-common-config:${rupCommonConfigVersion}"
+        compile("com.copyright.rup.common:rup-common-util:${rupCommonUtilVersion}")
+        compile("com.copyright.rup.common:rup-common-logging:${rupCommonLoggingVersion}")
+    }
+
+    checkstyle {
+        configProperties.suppressionsFile = rootProject.getProjectDir().getCanonicalPath()+
+                '/tools/stylecheck/checkstyle-suppressions.xml'
+    }
+}
