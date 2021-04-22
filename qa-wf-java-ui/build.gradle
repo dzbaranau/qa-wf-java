@@ -104,7 +104,7 @@ jar {
 task(type: JavaExec, 'bddTest') {
     description 'Runs the BDD tests'
 
-    main 'com.copyright.rup.qa.automation.pubportal.special.request.runner.StoryRunner'
+    main 'com.copyright.rup.qa.automation.works.factory.runner.StoryRunner'
     classpath = jar.outputs.files
 
     def variablePrefix = 'qaa.'

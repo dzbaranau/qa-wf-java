@@ -27,3 +27,7 @@ out
 
 debug.log
 pubportal-special-request/catalina.base_IS_UNDEFINED/*
+/caches/
+/daemon/
+/native/
+/wrapper/

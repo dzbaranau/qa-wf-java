@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:rup="http://www.copyright.com/rup/config"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.copyright.com/rup/config
+           http://www.copyright.com/rup/config.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="classpath:/rest-context.xml"/>
+    <import resource="classpath:/com/copyright/rup/common/config/rup-properties-config.xml" />
+
+    <rup:config-locations id="common.configuration.file">
+        classpath:/env/${qaa.environment}/rup-env.properties
+    </rup:config-locations>
+
+    <context:component-scan base-package="com.copyright.rup.qa.automation.works.factory"/>
+
+    <import resource="classpath:/qa-special-request-repository-config.xml" />
+    <import resource="classpath:/qa-apc-pubportal-repository-config.xml" />
+    <import resource="classpath:/qa-apc-oms-repository-config.xml" />
+
+    <bean class="com.copyright.rup.qa.automation.pubportal.special.request.pages.oa.instportal.locator.LocatorRegistererContextRefreshedListener"/>
+
+    <util:map id="publisherOrgIds">
+        <entry key="APCTEST1" value="$RUP{apc.ui.apctest1.cccorg.id}"/>
+        <entry key="APCTEST" value="$RUP{apc.ui.apctest.cccorg.id}"/>
+        <entry key="BMJ" value="$RUP{apc.ui.bmj.cccorg.id}"/>
+    </util:map>
+
+    <util:map id="licenseeOrgIds">
+        <entry key="AQA privacy" value ="$RUP{apc.profile.organization.lcn.id.default}"/>
+        <entry key="Australia AQA" value="$RUP{apc.profile.organization.lcn.id.default.au}"/>
+    </util:map>
+</beans>
