@@ -30,9 +30,9 @@ import java.util.Optional;
  * Prepare web drivers.
  */
 @Component
-@StepsDescription({
-        @SubMenu("General")
-})
+//@StepsDescription({
+//        @SubMenu("General")
+//})
 public class MainSteps {
     private static final Logger LOGGER = RupLogUtils.getLogger();
     private static final String NOT_SUPPORTED = "'%s' browser is not supported";

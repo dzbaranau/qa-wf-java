@@ -15,7 +15,7 @@ apply plugin: 'rup-qa-java'
 apply plugin: 'rup-idea'
 
 allprojects {
-    group = 'com.copyright.rup.qa.automation.wf'
+    group = 'com.copyright.rup.qa.automation.works'
 }
 
 subprojects {

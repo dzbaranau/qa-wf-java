@@ -27,9 +27,9 @@ import org.springframework.stereotype.Component;
  * @author Dzmitry Dziokin
  */
 @Component
-@StepsDescription({
-        @SubMenu("General")
-})
+//@StepsDescription({
+//        @SubMenu("General")
+//})
 public class LoginSteps {
 
     private static final Logger LOGGER = RupLogUtils.getLogger();

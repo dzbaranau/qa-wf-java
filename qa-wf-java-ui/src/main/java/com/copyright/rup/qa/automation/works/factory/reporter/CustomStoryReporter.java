@@ -1,6 +1,6 @@
 package com.copyright.rup.qa.automation.works.factory.reporter;
 import com.copyright.rup.common.logging.RupLogUtils;
-import com.copyright.rup.qa.automation.pubportal.special.request.service.ScreenshotService;
+import com.copyright.rup.qa.automation.works.factory.service.ScreenshotService;
 
 import com.epam.reportportal.jbehave.ReportPortalStoryReporter;
 import org.jbehave.core.model.Story;

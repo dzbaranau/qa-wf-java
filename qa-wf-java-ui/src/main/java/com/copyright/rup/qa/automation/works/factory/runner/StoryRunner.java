@@ -45,7 +45,7 @@ import org.junit.runners.Parameterized;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContextManager;
 
 import java.io.File;
@@ -154,8 +154,8 @@ public class StoryRunner extends JUnitStories {
         return new MostUsefulConfiguration()
                 .useParameterControls(getParameterControls())
                 .usePendingStepStrategy(new FailingUponPendingStep())
-                .useParameterConverters(new ParameterConverters(transformers)
-                    .addConverters(new RecordParameterConverter(transformers)))
+                .useParameterConverters(new ParameterConverters(transformers))
+//                    .addConverters(new RecordParameterConverter(transformers)))
                 .useStoryLoader(new LoadFromClasspath(getClass()))
                 .useStoryReporterBuilder(getStoryReporterBuilder())
                 .useViewGenerator(new DelegatingReportPortalViewGenerator(new FreemarkerViewGenerator(

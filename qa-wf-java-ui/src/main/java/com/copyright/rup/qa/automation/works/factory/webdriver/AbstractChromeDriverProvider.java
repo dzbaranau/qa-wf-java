@@ -2,7 +2,7 @@ package com.copyright.rup.qa.automation.works.factory.webdriver;
 
 import com.copyright.rup.common.logging.RupLogUtils;
 import com.copyright.rup.qa.automation.works.factory.utils.TestParameters;
-import com.copyright.rup.qa.automation.pubportal.special.request.utils.WebDriverProcessSnapshot;
+import com.copyright.rup.qa.automation.works.factory.utils.WebDriverProcessSnapshot;
 
 import com.codeborne.selenide.WebDriverProvider;
 import org.openqa.selenium.WebDriver;

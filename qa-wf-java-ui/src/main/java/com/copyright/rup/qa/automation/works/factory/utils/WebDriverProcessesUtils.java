@@ -1,7 +1,7 @@
 package com.copyright.rup.qa.automation.works.factory.utils;
 
 import com.copyright.rup.common.exception.RupRuntimeException;
-import com.copyright.rup.qa.automation.pubportal.special.request.utils.dto.Processes;
+import com.copyright.rup.qa.automation.works.factory.utils.dto.Processes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

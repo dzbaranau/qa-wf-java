@@ -1,7 +1,7 @@
-package com.copyright.rup.qa.automation.pubportal.special.request.utils;
+package com.copyright.rup.qa.automation.works.factory.utils;
 
 import com.copyright.rup.common.logging.RupLogUtils;
-import com.copyright.rup.qa.automation.pubportal.special.request.utils.dto.Processes;
+import com.copyright.rup.qa.automation.works.factory.utils.dto.Processes;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.jutils.jprocesses.JProcesses;
