@@ -1,6 +1,6 @@
 package com.copyright.rup.qa.automation.works.factory.docgen;
 
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.ParsedClass;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.ParsedClass;
 
 import java.io.File;
 import java.io.FileNotFoundException;

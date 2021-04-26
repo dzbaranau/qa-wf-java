@@ -2,10 +2,10 @@ package com.copyright.rup.qa.automation.works.factory.docgen;
 
 import com.copyright.rup.common.exception.RupRuntimeException;
 import com.copyright.rup.common.logging.RupLogUtils;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Node;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.ParsedClass;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.impl.ClassParser;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.impl.MarkdownCreator;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Node;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.ParsedClass;
+import com.copyright.rup.qa.automation.works.factory.docgen.impl.ClassParser;
+import com.copyright.rup.qa.automation.works.factory.docgen.impl.MarkdownCreator;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;

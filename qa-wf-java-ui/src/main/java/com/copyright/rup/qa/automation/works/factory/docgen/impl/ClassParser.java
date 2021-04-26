@@ -2,11 +2,11 @@ package com.copyright.rup.qa.automation.works.factory.docgen.impl;
 
 import com.copyright.rup.common.exception.RupRuntimeException;
 import com.copyright.rup.common.logging.RupLogUtils;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.IClassParser;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Parameter;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.ParsedClass;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Step;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.StepType;
+import com.copyright.rup.qa.automation.works.factory.docgen.IClassParser;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Parameter;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.ParsedClass;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Step;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.StepType;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
@@ -30,7 +30,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.StepType.ALIAS;
+import static com.copyright.rup.qa.automation.works.factory.docgen.dto.StepType.ALIAS;
 
 /**
  * Class for parsing source steps.

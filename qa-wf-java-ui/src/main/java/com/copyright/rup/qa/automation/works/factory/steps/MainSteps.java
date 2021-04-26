@@ -1,8 +1,8 @@
 package com.copyright.rup.qa.automation.works.factory.steps;
 
 import com.copyright.rup.common.logging.RupLogUtils;
-//import com.copyright.rup.qa.automation.works.factory.docgen.annotation.StepsDescription;
-//import com.copyright.rup.qa.automation.works.factory.docgen.annotation.SubMenu;
+import com.copyright.rup.qa.automation.works.factory.docgen.annotation.StepsDescription;
+import com.copyright.rup.qa.automation.works.factory.docgen.annotation.SubMenu;
 import com.copyright.rup.qa.automation.works.factory.runner.ExecutionContext;
 import com.copyright.rup.qa.automation.works.factory.runner.ExecutionScopeRuntime;
 import com.copyright.rup.qa.automation.works.factory.service.ScreenshotService;
@@ -30,9 +30,9 @@ import java.util.Optional;
  * Prepare web drivers.
  */
 @Component
-//@StepsDescription({
-//        @SubMenu("General")
-//})
+@StepsDescription({
+        @SubMenu("General")
+})
 public class MainSteps {
     private static final Logger LOGGER = RupLogUtils.getLogger();
     private static final String NOT_SUPPORTED = "'%s' browser is not supported";

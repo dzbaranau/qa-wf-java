@@ -1,10 +1,10 @@
 package com.copyright.rup.qa.automation.works.factory.docgen.impl;
 
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.IDocumentationCreator;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Node;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Parameter;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.Step;
-import com.copyright.rup.qa.automation.pubportal.special.request.docgen.dto.StepType;
+import com.copyright.rup.qa.automation.works.factory.docgen.IDocumentationCreator;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Node;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Parameter;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.Step;
+import com.copyright.rup.qa.automation.works.factory.docgen.dto.StepType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 

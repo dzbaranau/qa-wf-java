@@ -4,8 +4,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 import com.copyright.rup.common.logging.RupLogUtils;
 import com.copyright.rup.qa.automation.works.factory.credentials.CredentialsHolder;
-//import com.copyright.rup.qa.automation.works.factory.docgen.annotation.StepsDescription;
-//import com.copyright.rup.qa.automation.works.factory.docgen.annotation.SubMenu;
+import com.copyright.rup.qa.automation.works.factory.docgen.annotation.StepsDescription;
+import com.copyright.rup.qa.automation.works.factory.docgen.annotation.SubMenu;
 import com.copyright.rup.qa.automation.works.factory.pages.LoginPage;
 //import com.copyright.rup.qa.automation.works.factory.pages.SpecialRequestTabPage;
 //import com.copyright.rup.qa.automation.works.factory.pages.oa.PubPortalPage;
@@ -27,9 +27,9 @@ import org.springframework.stereotype.Component;
  * @author Dzmitry Dziokin
  */
 @Component
-//@StepsDescription({
-//        @SubMenu("General")
-//})
+@StepsDescription({
+        @SubMenu("General")
+})
 public class LoginSteps {
 
     private static final Logger LOGGER = RupLogUtils.getLogger();
