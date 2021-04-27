@@ -1,5 +1,7 @@
 package com.copyright.rup.qa.automation.works.factory.docgen.impl;
 
+import static com.copyright.rup.qa.automation.works.factory.docgen.dto.StepType.ALIAS;
+
 import com.copyright.rup.common.exception.RupRuntimeException;
 import com.copyright.rup.common.logging.RupLogUtils;
 import com.copyright.rup.qa.automation.works.factory.docgen.IClassParser;
@@ -27,10 +29,13 @@ import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
-
-import static com.copyright.rup.qa.automation.works.factory.docgen.dto.StepType.ALIAS;
 
 /**
  * Class for parsing source steps.
@@ -129,7 +134,7 @@ public class ClassParser implements IClassParser {
     }
 
     private void addAliasSteps(List<Step> steps, MultiValuedMap<StepType, String> annotations,
-            String alias, String stepDescription, List<Parameter> parameters) {
+                               String alias, String stepDescription, List<Parameter> parameters) {
         Set<StepType> stepTypes = annotations.keySet();
         for (StepType type : stepTypes) {
             if (type != ALIAS) {
