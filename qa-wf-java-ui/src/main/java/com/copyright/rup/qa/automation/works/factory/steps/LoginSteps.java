@@ -7,11 +7,8 @@ import com.copyright.rup.qa.automation.works.factory.credentials.CredentialsHold
 import com.copyright.rup.qa.automation.works.factory.docgen.annotation.StepsDescription;
 import com.copyright.rup.qa.automation.works.factory.docgen.annotation.SubMenu;
 import com.copyright.rup.qa.automation.works.factory.pages.LoginPage;
-//import com.copyright.rup.qa.automation.works.factory.pages.SpecialRequestTabPage;
-//import com.copyright.rup.qa.automation.works.factory.pages.oa.PubPortalPage;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.When;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +31,8 @@ public class LoginSteps {
 
     private static final Logger LOGGER = RupLogUtils.getLogger();
 
-    @Value("$RUP{apc.ui.pubportal.url}")
-    private String pubportalUrl;
+    @Value("$RUP{wf.ui.url}")
+    private String wfUrl;
 
     @Autowired
     private LoginPage loginPage;
@@ -43,65 +40,16 @@ public class LoginSteps {
     @Autowired
     private CredentialsHolder credentialsHolder;
 
-//    @Autowired
-//    private SpecialRequestTabPage specialRequestTabPage;
-//
-//    @Autowired
-//    private PubPortalPage pubPortalPage;
-
     /**
-     * Opens pubportal for user with the specific role.
+     * Opens wf for user with the specific role.
      *
      * @param username role of the user to log in
      */
     @Given("[$username] user")
-    @When("[$username] user")
-    public void logInPubportal(String username) {
+    public void logInWf(String username) {
         Pair<String, String> credentials = credentialsHolder.getCredentialsForUser(username);
-        LOGGER.info("Open pubportal for user [{}] with role [{}]", credentials.getKey(), username);
-        open(pubportalUrl);
+        LOGGER.info("Open wf for user [{}] with role [{}]", credentials.getKey(), username);
+        open(wfUrl);
         loginPage.login(credentials.getKey(), credentials.getValue());
-    }
-
-//    /**
-//     * Clicks Logout link on no privileges page.
-//     */
-//    @Given("user logs out")
-//    @When("user logs out")
-//    public void clickLogoutLink() {
-//        specialRequestTabPage.clickLogoutButton();
-//    }
-
-
-//    /**
-//     * Enter credentials.
-//     *
-//     * @param user user
-//     */
-//    @When("user enters credentials on CAS page for user [$user]")
-//    public void enterCredentials(String user) {
-//        Pair<String, String> credentials = credentialsHolder.getCredentialsForUser(user);
-//        loginPage.doLogin(credentials.getKey(), credentials.getValue());
-//    }
-
-    /**
-     * User open pubportal.
-     */
-    @Given("user goes to pubportal page")
-    @When("user goes to pubportal page")
-    public void login() {
-        LOGGER.info("Open pubportal");
-        open(pubportalUrl);
-        loginPage.login();
-    }
-
-    /**
-     * Login with "view only" permissions.
-     */
-    @Given("user with view only permossions logs in")
-    public void loginAsViewer() {
-        LOGGER.info("Open pubportal");
-        open(pubportalUrl);
-        loginPage.loginAsViewer();
     }
 }

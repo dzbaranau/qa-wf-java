@@ -34,29 +34,6 @@ public final class TestParameters {
     public static final String META_FILTERS =
             System.getProperty("qaa.metaFilters", "-make-screenshot -ignore -ignoreUsualRun");
 
-
-    /**
-     * The constant PATH_TO_RESOURCES.
-     */
-    public static final String PATH_TO_RESOURCES =
-            System.getProperty("qaa.resources.path", "bin");
-
-    //    /**
-    //     * The constant PATH_CHROME_EXTENSION_MODIFY_HEADER.
-    //     */
-    //    public static final String PATH_CHROME_EXTENSION_MODIFY_HEADER =
-    //            String.format("%s/drivers/chrome_extension/modify_header.crx", PATH_TO_RESOURCES);
-    //
-    //    /**
-    //     * The constant DOWNLOAD_PATH.
-    //     */
-    //    public static final String DOWNLOAD_PATH = PATH_TO_RESOURCES.concat("/downloaded");
-    //
-    //    /**
-    //     * The constant UPLOAD_PATH.
-    //     */
-    //    public static final String UPLOAD_PATH = PATH_TO_RESOURCES.concat("/upload");
-
     /**
      * The constant BROWSER.
      */

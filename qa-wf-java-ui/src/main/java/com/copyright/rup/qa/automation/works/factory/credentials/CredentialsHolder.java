@@ -34,25 +34,7 @@ public class CredentialsHolder {
     @PostConstruct
     public void fillCredentials() {
         credentialsMap = ImmutableMap.<String, String>builder()
-                .put("spr.only.admin.role.one.RH", "pubportal.spr.ui.users.only.admin.role.one.RH")
-                .put("spr.admin.and.roa.role.one.RH", "pubportal.spr.ui.users.admin.and.roa.role.one.RH")
-                .put("spr.admin.no.SPRs", "pubportal.spr.ui.users.admin.no.SPRs")
-                .put("spr.only.admin.role.several.RH", "pubportal.spr.ui.users.only.admin.role.several.RH")
-                .put("spr.only.scroll.in.Pub.ddl", "pubportal.spr.ui.users.only.scroll.in.Pub.ddl")
-                .put("spr.refC.predefined.test.data", "pubportal.spr.ui.users.refC.predefined.test.data")
-                .put("spr.refD.user.list.test", "pubportal.spr.ui.users.refD.user.list.test")
-                .put("super.admin", "pubportal.spr.ui.users.super.admin")
-                .put("super.admin.cem", "pubportal.spr.ui.users.super.admin.cem")
-                .put("super.admin.with.RH.permissions.for.main.test.org",
-                        "pubportal.spr.ui.super.admin.with.RH.permissions.for.main.test.org")
-                .put("super.admin.with.RH.and.ROA.permissions.for.refB",
-                        "pubportal.spr.ui.super.admin.with.RH.and.ROA.permissions.for.refB")
-                .put("user.without.any.permissions", "pubportal.spr.ui.user.without.any.permissions")
-                .put("dummy.user", "pubportal.spr.ui.spr.dummy.user")
-                .put("apc.default.user", "pubportal.spr.ui.users.apc.deployer")
-                .put("pubportal.admin.role.user", "pubportal.admin.role.user")
-                .put("oa.only.APC.Int.admin.role.user", "oa.only.admin.role.one.RH.APC.Int")
-                .put("apc.ui.users.viewer", "apc.ui.users.viewer")
+                .put("admin", "wf.ui.users.admin.role")
                 .build();
     }
 

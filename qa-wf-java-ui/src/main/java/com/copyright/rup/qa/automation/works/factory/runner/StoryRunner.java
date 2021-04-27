@@ -45,7 +45,7 @@ import org.junit.runners.Parameterized;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-//import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContextManager;
 
 import java.io.File;
@@ -71,7 +71,7 @@ import java.util.stream.Stream;
  * @author Dzmitry Dziokin
  */
 @RunWith(Parameterized.class)
-//@ContextConfiguration(locations = "classpath:/context.xml")
+@ContextConfiguration(locations = "classpath:/context.xml")
 public class StoryRunner extends JUnitStories {
 
     private static final Logger LOGGER;
@@ -155,7 +155,6 @@ public class StoryRunner extends JUnitStories {
                 .useParameterControls(getParameterControls())
                 .usePendingStepStrategy(new FailingUponPendingStep())
                 .useParameterConverters(new ParameterConverters(transformers))
-//                    .addConverters(new RecordParameterConverter(transformers)))
                 .useStoryLoader(new LoadFromClasspath(getClass()))
                 .useStoryReporterBuilder(getStoryReporterBuilder())
                 .useViewGenerator(new DelegatingReportPortalViewGenerator(new FreemarkerViewGenerator(
@@ -207,6 +206,7 @@ public class StoryRunner extends JUnitStories {
                 .withViewResources(viewResources)
                 .withFormats(Format.STATS, Format.HTML_TEMPLATE, Format.XML)
                 .withPathResolver(new FilePrintStreamFactory.ResolveToPackagedName());
+
     }
 
     private ParameterControls getParameterControls() {

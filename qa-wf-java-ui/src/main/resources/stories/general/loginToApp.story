@@ -6,4 +6,5 @@ Scenario: Admin can login
 Meta:
     @pre_smoke
     @smoke
-Given [super.admin] user
+Given [admin] user
+!-- Given user goes to wf page

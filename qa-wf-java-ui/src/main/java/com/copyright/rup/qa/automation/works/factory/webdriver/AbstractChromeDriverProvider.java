@@ -1,7 +1,7 @@
 package com.copyright.rup.qa.automation.works.factory.webdriver;
 
 import com.copyright.rup.common.logging.RupLogUtils;
-import com.copyright.rup.qa.automation.works.factory.utils.TestParameters;
+//import com.copyright.rup.qa.automation.works.factory.utils.TestParameters;
 import com.copyright.rup.qa.automation.works.factory.utils.WebDriverProcessSnapshot;
 
 import com.codeborne.selenide.WebDriverProvider;
@@ -29,11 +29,13 @@ public abstract class AbstractChromeDriverProvider implements WebDriverProvider 
 
     private static final Logger LOGGER = RupLogUtils.getLogger();
 
+    private static final String CHROME_VERSION = "89";
+
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
         WebDriverProcessSnapshot processes = new WebDriverProcessSnapshot(CHROME_PROCESS_NAME, WEBDRIVER_PROCESS_NAME);
         processes.updateRunningProcesses();
-        WebDriverManager.chromedriver().targetPath("./build/cache").version(TestParameters.CHROME_VERSION).setup();
+        WebDriverManager.chromedriver().targetPath("./build/cache").version(CHROME_VERSION).setup();
         WebDriver webDriver = null;
         int retryCount = 0;
         while (null == webDriver) {

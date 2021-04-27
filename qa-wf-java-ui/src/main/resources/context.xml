@@ -22,20 +22,20 @@
 
     <context:component-scan base-package="com.copyright.rup.qa.automation.works.factory"/>
 
-    <import resource="classpath:/qa-special-request-repository-config.xml" />
-    <import resource="classpath:/qa-apc-pubportal-repository-config.xml" />
-    <import resource="classpath:/qa-apc-oms-repository-config.xml" />
+<!--    <import resource="classpath:/qa-special-request-repository-config.xml" />-->
+<!--    <import resource="classpath:/qa-apc-pubportal-repository-config.xml" />-->
+<!--    <import resource="classpath:/qa-apc-oms-repository-config.xml" />-->
 
-    <bean class="com.copyright.rup.qa.automation.pubportal.special.request.pages.oa.instportal.locator.LocatorRegistererContextRefreshedListener"/>
+<!--    <bean class="com.copyright.rup.qa.automation.pubportal.special.request.pages.oa.instportal.locator.LocatorRegistererContextRefreshedListener"/>-->
 
-    <util:map id="publisherOrgIds">
-        <entry key="APCTEST1" value="$RUP{apc.ui.apctest1.cccorg.id}"/>
-        <entry key="APCTEST" value="$RUP{apc.ui.apctest.cccorg.id}"/>
-        <entry key="BMJ" value="$RUP{apc.ui.bmj.cccorg.id}"/>
-    </util:map>
+<!--    <util:map id="publisherOrgIds">-->
+<!--        <entry key="APCTEST1" value="$RUP{apc.ui.apctest1.cccorg.id}"/>-->
+<!--        <entry key="APCTEST" value="$RUP{apc.ui.apctest.cccorg.id}"/>-->
+<!--        <entry key="BMJ" value="$RUP{apc.ui.bmj.cccorg.id}"/>-->
+<!--    </util:map>-->
 
-    <util:map id="licenseeOrgIds">
-        <entry key="AQA privacy" value ="$RUP{apc.profile.organization.lcn.id.default}"/>
-        <entry key="Australia AQA" value="$RUP{apc.profile.organization.lcn.id.default.au}"/>
-    </util:map>
+<!--    <util:map id="licenseeOrgIds">-->
+<!--        <entry key="AQA privacy" value ="$RUP{apc.profile.organization.lcn.id.default}"/>-->
+<!--        <entry key="Australia AQA" value="$RUP{apc.profile.organization.lcn.id.default.au}"/>-->
+<!--    </util:map>-->
 </beans>

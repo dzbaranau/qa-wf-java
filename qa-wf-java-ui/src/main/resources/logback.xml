@@ -1,0 +1,35 @@
+<configuration>
+
+    <include resource="com/copyright/rup/common/logging/logback-standard.xml" />
+
+    <appender name="RP" class="com.epam.reportportal.logback.appender.ReportPortalAppender">
+        <encoder>
+            <!--Best practice: don't put time and logging level to the final message. Appender do this for you-->
+            <pattern>%d{HH:mm:ss.SSS} [%t] %-5level - %msg%n</pattern>
+            <pattern>[%t] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>build/logs/product-pricing-rest-tests.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>build/logs/product-pricing-rest-tests.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%.-12mdc{TID}][%.-20mdc{TNAME}] %logger{44} - %message%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- STANDARD-PATTERN: Declare logger(s) for the application. -->
+    <logger name="com.copyright.rup.qa.automation.works.factory" level="INFO" />
+    <root level="INFO">
+        <appender-ref ref="RUP-CONSOLE" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="RP"/>
+    </root>
+</configuration>

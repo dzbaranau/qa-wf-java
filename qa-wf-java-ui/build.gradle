@@ -143,16 +143,16 @@ task(type: JavaExec, 'bddTest') {
 
 task(type: JavaExec, 'cleanProcesses') {
     description 'Clean browser and webdriver processes'
-    main 'com.copyright.rup.qa.automation.pubportal.special.request.utils.CleanWebDriverProcessesTask'
+    main 'com.copyright.rup.qa.automation.works.factory.utils.CleanWebDriverProcessesTask'
     classpath = jar.outputs.files
     systemProperties System.getProperties()
 }
 
 task(type: JavaExec, 'genDoc') {
     description 'Generate readme.md file to describe steps'
-    String pathToSteps = "src/main/java/com/copyright/rup/qa/automation/pubportal/special/request/steps"
+    String pathToSteps = "src/main/java/com/copyright/rup/qa/automation/works/factory/steps"
     String docFile = "README.md"
-    main 'com.copyright.rup.qa.automation.pubportal.special.request.docgen.DocumentationGenerator'
+    main 'com.copyright.rup.qa.automation.works.factory.docgen.DocumentationGenerator'
     args(pathToSteps, docFile)
     classpath = jar.outputs.files
     systemProperties System.getProperties()
@@ -162,7 +162,7 @@ task(type: JavaExec, 'genDoc') {
 task(type: JavaExec, 'removeManuscript') {
     description 'Remove manuscript'
 
-    main 'com.copyright.rup.qa.automation.pubportal.special.request.utils.RemoveManuscriptTask'
+    main 'com.copyright.rup.qa.automation.works.factory.utils.RemoveManuscriptTask'
     classpath = jar.outputs.files
 
     systemProperties System.getProperties()

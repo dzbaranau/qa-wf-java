@@ -43,7 +43,6 @@ public class MainSteps {
     private BrowserType browser;
 
     private Map<BrowserType, String> webDriverProviders = ImmutableMap.of(
-//            BrowserType.FIREFOX, FirefoxDriverProvider.class.getCanonicalName(),
             BrowserType.CHROME, ChromeDriverProvider.class.getCanonicalName()
     );
 
